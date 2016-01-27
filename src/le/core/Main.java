@@ -1,18 +1,32 @@
 package le.core;
 
 import java.awt.MouseInfo;
+import java.util.logging.Level;
+
+import le.tiles.TileManager;
 
 public class Main {
 	public Main() {
+		GlobalVars.logger();
 		GlobalVars.editorFrame = new EditorFrame(GlobalVars.name, GlobalVars.version);
 		GlobalVars.toolFrame = new ToolFrame("Tools");
 		GlobalVars.etFrame = new EntityTileFrame("Entities & Tiles");
 		
-		gameloop();
+		TileManager tm = new TileManager("Tilesheet.png");
+		tm.seperate();
+		
+		Thread gameloop = new Thread() {
+			public void run() {
+				gameloop();
+			}
+		};
+		gameloop.start();
+		
+		GlobalVars.logger.log(Level.INFO, "Initiated Successfully");
 	}
 	
 	public void gameloop() {
-		final double GAME_HERTZ = 30.0;
+		final double GAME_HERTZ = 60.0;
 		final double TIME_BETWEEN_UPDATES = 1000000000 / GAME_HERTZ;
 		final int MAX_UPDATES_BEFORE_RENDER = 5;
 		double lastUpdateTime = System.nanoTime();
@@ -28,7 +42,7 @@ public class Main {
 			while(now - lastUpdateTime > TIME_BETWEEN_UPDATES && updateCount < MAX_UPDATES_BEFORE_RENDER) {
 				//UPDATE HERE
 				
-				if(GlobalVars.mouse.contains(1)) {
+				if(GlobalVars.mouse.contains(3)) {
 					int dx = 0;
 					int dy = 0;
 					GlobalVars.currentMousePosition = new Vector2D(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
