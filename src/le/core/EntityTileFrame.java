@@ -13,9 +13,9 @@ public class EntityTileFrame extends JFrame {
 		super(name);
 		this.setContentPane(new EntityTilePanel());
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.setSize(new Dimension(200, 600));
+		this.setSize(new Dimension(250, 600));
 		this.setResizable(false);
-		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width - 200, 0);
+		this.setLocation(Toolkit.getDefaultToolkit().getScreenSize().width - 250, 0);
 		this.setVisible(true);
 	}
 }

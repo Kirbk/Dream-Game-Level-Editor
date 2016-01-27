@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -28,7 +29,7 @@ public class EditorFrame extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(!GlobalVars.mouse.contains(e.getButton())) {
-					GlobalVars.previousMousePosition = new Vector2D(e.getX(), e.getY());
+					GlobalVars.previousMousePosition = new Vector2D(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
 					GlobalVars.mouse.add(e.getButton());
 				}
 			}
@@ -79,7 +80,8 @@ class EditorPanel extends JPanel {
 		g2.fillRect(GlobalVars.scrollX, GlobalVars.scrollY, 16, 16);
 		
 		g2.setColor(Color.WHITE);
-		g2.drawString("(" + GlobalVars.scrollX + ", " + GlobalVars.scrollY + ")", 0, 10);
+		g2.drawString("FPS: " + GlobalVars.fps, 0, 10);
+		g2.drawString("(" + GlobalVars.scrollX + ", " + GlobalVars.scrollY + ")", 0, 20);
 		
 		GlobalVars.frameCount++;
 	}

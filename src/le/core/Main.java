@@ -29,9 +29,11 @@ public class Main {
 				//UPDATE HERE
 				
 				if(GlobalVars.mouse.contains(1)) {
+					int dx = 0;
+					int dy = 0;
 					GlobalVars.currentMousePosition = new Vector2D(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
-					int dx = GlobalVars.currentMousePosition.x - GlobalVars.previousMousePosition.x;
-					int dy = GlobalVars.currentMousePosition.y - GlobalVars.previousMousePosition.y;
+					dx = GlobalVars.currentMousePosition.x - GlobalVars.previousMousePosition.x;
+					dy = GlobalVars.currentMousePosition.y - GlobalVars.previousMousePosition.y;
 					
 					GlobalVars.scrollX += dx;
 					GlobalVars.scrollY += dy;

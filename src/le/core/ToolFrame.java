@@ -15,7 +15,7 @@ public class ToolFrame extends JFrame {
 		super(name);
 		this.setContentPane(new ToolPanel());
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.setSize(new Dimension(200, 600));
+		this.setSize(new Dimension(250, 600));
 		this.setResizable(false);
 		this.setLocation(0, 0);
 		this.setVisible(true);
