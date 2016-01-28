@@ -3,6 +3,8 @@ package le.core;
 import java.awt.MouseInfo;
 import java.util.logging.Level;
 
+import javax.swing.JFileChooser;
+
 import le.tiles.TileManager;
 
 public class Main {
@@ -12,8 +14,13 @@ public class Main {
 		GlobalVars.toolFrame = new ToolFrame("Tools");
 		GlobalVars.etFrame = new EntityTileFrame("Entities & Tiles");
 		
-		TileManager tm = new TileManager("Tilesheet.png");
-		tm.seperate();
+		JFileChooser fileDialog = new JFileChooser();
+		
+		fileDialog.showOpenDialog(GlobalVars.editorFrame);
+		System.out.println(fileDialog.getSelectedFile());
+		
+		GlobalVars.tm = new TileManager("Tilesheet.png");
+		GlobalVars.tm.seperate();
 		
 		Thread gameloop = new Thread() {
 			public void run() {

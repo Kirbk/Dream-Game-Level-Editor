@@ -10,6 +10,9 @@ import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+import le.levels.Level;
+import le.tiles.TileManager;
+
 public class GlobalVars {
 	public static final String name = "Level Editor";
 	public static final String version = "0.1";
@@ -18,6 +21,7 @@ public class GlobalVars {
 	public static EditorFrame editorFrame;
 	public static ToolFrame toolFrame;
 	public static EntityTileFrame etFrame;
+	public static TileManager tm;
 	
 	public static float interpolation = 0.0f;
 	public static int fps;
@@ -26,6 +30,8 @@ public class GlobalVars {
 	public static int scrollX = 0, scrollY = 0;
 	public static Vector2D previousMousePosition = new Vector2D(0, 0);
 	public static Vector2D currentMousePosition = new Vector2D(0, 0);
+	public static int scale = 1;
+	public static Level currentLevel;
 	
 	public static ArrayList<Integer> mouse = new ArrayList<Integer>();
 	

@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -51,6 +53,17 @@ public class EditorFrame extends JFrame {
 				
 			}
 		});
+		
+		this.addMouseWheelListener(new MouseWheelListener() {
+
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				if(e.getWheelRotation() == 1) {
+					GlobalVars.scale -= 1;
+				}
+			}
+			
+		});
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -77,7 +90,7 @@ class EditorPanel extends JPanel {
 		}
 		
 		g2.setColor(Color.RED);
-		g2.fillRect(GlobalVars.scrollX, GlobalVars.scrollY, 16, 16);
+		g2.fillRect(GlobalVars.scrollX, GlobalVars.scrollY, 16 * GlobalVars.scale, 16 * GlobalVars.scale);
 		
 		g2.setColor(Color.WHITE);
 		g2.drawString("FPS: " + GlobalVars.fps, 0, 10);

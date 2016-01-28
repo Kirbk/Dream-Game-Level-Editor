@@ -43,10 +43,28 @@ public class TileManager {
 	}
 	
 	public void forceID(String texture, int ID) {
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(getClass().getResource(texture));
+		}catch(Exception e) {
+			GlobalVars.logger.log(Level.WARNING, "Failed to forceID, texture not found", e);
+		}
 		
+		if(img.getWidth() > 16 || img.getHeight() > 16) {
+			GlobalVars.logger.log(Level.WARNING, "Failed to forceID, texture must be 16x16");
+		}else {
+			GlobalVars.logger.log(Level.INFO, "Forcing texture into ID: " + ID);
+			textures.set(ID, img);
+		}
 	}
 	
 	public void switchID(int id1, int id2) {
+		BufferedImage temp1 = textures.get(id1);
+		BufferedImage temp2 = textures.get(id2);
 		
+		textures.set(id1, temp2);
+		textures.set(id2, temp1);
+		
+		GlobalVars.logger.log(Level.INFO, "Switched texture IDs: " + id1 + " and " + id2);
 	}
 }
